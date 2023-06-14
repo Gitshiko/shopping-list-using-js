@@ -1,43 +1,53 @@
+const input = document.getElementById('shopping-item');
+const itemNumberToAdd = document.getElementById('itemNumberId');
+const numberOfItemsInCart = document.getElementById('numberOfItemsId');
+const basket = document.getElementById('basketId');
+const finalList = document.getElementById('finalListId');
+const thankYou = document.getElementById('thankYouId');
 
-let shoppingList = [];
-var text = "";
+let ol = document.getElementById('list');
+ol.style.display = "none"; //to keep the list hidden until finished
+
+var shoppingList = []; //var variables used to carry values from one function to the other
 let index = 1;
-let input = document.getElementById('shopping-item');
-let itemNumber = document.getElementById('itemNumberId');
-let numberOfItems = document.getElementById('numberOfItemsId');
-let basket = document.getElementById('basketId');
-let finalList = document.getElementById('finalListId');
-let form = document.getElementById('form');
 
 
 input.addEventListener("keypress", function(event)
 {   if (event.key === "Enter") {
         event.preventDefault();
-        numberOfItems.innerHTML = index;
-            
-        let item = input.value;
+        
+        const item = input.value;
         //console.log(item); 
         shoppingList[index-1] = " " + item;
-        text = shoppingList.toString(); //a var is used because this needs to be used outside of this function
-        basket.innerHTML = text;
-        //console.log(shoppingList);
+        let basketText = shoppingList.toString(); //this is a short-cut method to get array values in a comma separated list.      
+        basket.innerHTML = basketText;
+
         index += 1;
-        itemNumber.innerHTML = index; //This increases with every press Enter
+        itemNumberToAdd.innerHTML = index; // to change item number with pree enter
+        numberOfItemsInCart.innerHTML = index-1;// to change cart number with press enter
         input.value = ""; //this clears the input field after press Enter
     }      
     
 });
 
-
-
 form.onsubmit=function(event) {
     event.preventDefault();
     //alert('working');
-    finalList.innerHTML = 'Your Shopping List: ' + text;
-    itemNumber.innerHTML = '1';
-    numberOfItems.innerHTML = "0";
-    basket.innerHTML = " ";
-   
+    thankYou.innerHTML = 'Thank you for shopping with us!';
+    finalList.innerHTML = 'Here is your Shopping List: ';
+    
+    itemNumberToAdd.innerHTML = '1'; //resetting the figures
+    numberOfItemsInCart.innerHTML = "0"; //resetting the figures
+    basket.innerHTML = " "; //resetting the figures
+    
+    //This is for writing array elements as an ol 
+    for (i = 0; i <= shoppingList.length -1; i++) {
+        const li = document.createElement("li");
+        li.innerHTML = shoppingList[i];
+        ol.appendChild(li);
+        }
+    ol.style.display = "block"; //for showing the message and ol after finishing
+       
 }
  
 
