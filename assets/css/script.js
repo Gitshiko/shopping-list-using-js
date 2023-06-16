@@ -8,7 +8,7 @@ const thankYou = document.getElementById('thankYouId');
 let ol = document.getElementById('list');
 ol.style.display = "none"; //to keep the list hidden until finished
 
-var shoppingList = []; //var variables used to carry values from one function to the other
+let shoppingList = []; //This is a global variable (defined outside the functions)
 let index = 1;
 
 
@@ -23,7 +23,7 @@ input.addEventListener("keypress", function(event)
         basket.innerHTML = basketText;
 
         index += 1;
-        itemNumberToAdd.innerHTML = index; // to change item number with pree enter
+        itemNumberToAdd.innerHTML = index; // to change item number with press enter
         numberOfItemsInCart.innerHTML = index-1;// to change cart number with press enter
         input.value = ""; //this clears the input field after press Enter
     }      
@@ -32,6 +32,7 @@ input.addEventListener("keypress", function(event)
 
 form.onsubmit=function(event) {
     event.preventDefault();
+    console.log(shoppingList);
     //alert('working');
     thankYou.innerHTML = 'Thank you for shopping with us!';
     finalList.innerHTML = 'Here is your Shopping List: ';
