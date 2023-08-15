@@ -8,18 +8,20 @@
     <script src="/assets/css/script.js" defer></script>
 </head>
 <body>
-    <form id="form" re>
-        <fieldset>
-            <legend>Create your shopping list</legend>
-            <label for="">Add item <span id="itemNumberId">1</span></label>
-            <input type="text" id="shopping-item" name="item">
-            <input class="finish-button" type="submit" value="Finish">
-            
-            <h4>You have <span id="numberOfItemsId">0</span> items in the basket.</h4>
-            <p>Your shopping basket: <span id="basketId"></span></p>
-        </fieldset>
+    <div class="form-container">
+        <form id="form">
+            <fieldset>
+                <legend>Create your shopping list</legend>
+                <label for="">Add item <span id="itemNumberId">1</span></label>
+                <input type="text" id="shopping-item" name="item">
+                <input class="finish-button" type="submit" value="Finish">
         
-    </form>
+                <h4>You have <span id="numberOfItemsId">0</span> items in the basket.</h4>
+                <p>Your shopping basket: <span id="basketId"></span></p>
+            </fieldset>
+        
+        </form>
+    </div>
     <h3 id="thankYouId"></h3>
     <h3 id="finalListId"></h3>
     <ol id="list"></ol>
